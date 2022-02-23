@@ -8,12 +8,15 @@ Where first_name = 'Scarlett';
 Select count(rental_id) FROM sakila.rental
 WHERE return_date IS NULL;
 
+Select count(rental_id) FROM sakila.rental
+WHERE return_date IS NOT NULL;
+
 -- 3 What are the shortest and longest movie duration? Name the values max_duration and min_duration.
 Select Min(length) as min_duration, Max(length) as max_duration FROM sakila.film;
 
 -- 4. What's the average movie duration expressed in format (hours, minutes)?
 Select AVG(length) as avg_duration FROM sakila.film;
-Select CONVERT(AVG(length),time) as avg_duration FROM sakila.film; -- wrong!!!!!!!!
+Select SEC_TO_TIME(AVG(length)*60) as avg_duration FROM sakila.film; --
 
 -- 5. How many distinct (different) actors' last names are there?
 SELECT DISTINCT(last_name) FROM sakila.actor;
